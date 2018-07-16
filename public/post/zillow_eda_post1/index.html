@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Home  | Living small in the city or large in the &#39;burbs?</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.40.3" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.ab4b67a3ea25990fa8279f3b7ef08b61.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="Living small in the city or large in the &#39;burbs?" />
+<meta property="og:description" content="An exploratory analysis of Salt Lake City&#39;s real estate data to address the eternal question" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://example.com/post/zillow_eda_post1/" />
+
+
+
+<meta property="article:published_time" content="2018-04-01T10:58:08-04:00"/>
+
+<meta property="article:modified_time" content="2018-04-01T10:58:08-04:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Living small in the city or large in the &#39;burbs?">
+<meta itemprop="description" content="An exploratory analysis of Salt Lake City&#39;s real estate data to address the eternal question">
+
+
+<meta itemprop="datePublished" content="2018-04-01T10:58:08-04:00" />
+<meta itemprop="dateModified" content="2018-04-01T10:58:08-04:00" />
+<meta itemprop="wordCount" content="1390">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Living small in the city or large in the &#39;burbs?"/>
+<meta name="twitter:description" content="An exploratory analysis of Salt Lake City&#39;s real estate data to address the eternal question"/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  
+  
+  <header class="cover bg-top" style="background-image: url('https://example.com/images/houses.png');">
+    <div class="pb3-m pb6-l bg-black-60">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="https://example.com" class="f3 fw2 hover-white no-underline white-90 dib">
+      Home
+    </a>
+    <div class="flex-l items-center">
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About Katherine page">
+              About Katherine
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/post/" title="Data Blog page">
+              Data Blog
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/travel_blog/" title="Travel Blog page">
+              Travel Blog
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+
+
+
+
+  <a href="https://github.com/katherinechandler" class="link-transition github link dib z-999 pt3 pt0-l mr2" title="Github link">
+    <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+  </a>
+
+
+    </div>
+  </div>
+</nav>
+
+      <div class="tc-l pv6 ph3 ph4-ns">
+        <h1 class="f2 f1-l fw2 white-90 mb0 lh-title">Living small in the city or large in the &#39;burbs?</h1>
+        
+          <h2 class="fw1 f5 f3-l white-80 measure-wide-l center lh-copy mt3 mb4">
+            An exploratory analysis of Salt Lake City&#39;s real estate data to address the eternal question
+          </h2>
+        
+      </div>
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  <article class="flex-l flex-wrap justify-between mw8 center">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        DATA BLOG
+      </p>
+      <h1 class="f1 athelas mb1">Living small in the city or large in the &#39;burbs?</h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="2018-04-01T10:58:08-04:00">April 1, 2018</time>
+    </header>
+
+    <main class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
+
+<p>I am a proponent of smaller homes, and recent dinner discussions have made me curious about the relationship between the size of a home and its relative appreciation in value. My vocal family members maintain that &lsquo;You&rsquo;re better off owning a tiny home downtown than a mansion in the &lsquo;burbs!!!&rsquo;. Indeed, current hipster cannon asserts that bigger is not better when it comes to housing. While there are many non-economic merits of a modestly sized home, I was curious about how the &lsquo;small-home&rsquo; movement holds up to economic reality. Is a small urban home really a better investment than a large suburban home? I recently moved back to my hometown of Salt Lake City, and in an entirely self-serving selection process I elected to address this question using real estate data for the Salt Lake City metro area.</p>
+
+<h3 id="questions-for-exploration">Questions for Exploration</h3>
+
+<p>This question was addressed as three discrete sub-questions:</p>
+
+<ul>
+<li>Are small homes more valuable (per square foot) than large homes?</li>
+<li>Is a small home downtown really more valuable than a large home in the &lsquo;burbs?</li>
+<li>Has the relative value of small urban homes increased more over time than that of large suburban homes?</li>
+</ul>
+
+<h3 id="my-data">My Data</h3>
+
+<p>I used two different data sets in my exploration of these questions: one for active real estate listings and one for historical real estate trends. I generated the active listing data using a modified script (<a href="https://gist.github.com/scrapehero/5f51f344d68cf2c022eb2d23a2f1cf95" title="scraperhero"><code>scrapehero's zillow.py</code></a>) to scrape Zillow listing data for Salt Lake City zip codes (see the full code in my <a href="https://github.com/katherinechandler/Zillow_Analysis_Salt_Lake_City" title="GitHub">GitHub repo</a>). The historical data is a timecourse series (April 1996 to February 2018) of Zillow Home Value Index (ZHVI, <a href="https://www.zillow.com/research/zhvi-methodology-6032/" title="ZHVI methodology">ZHVI methodology here</a>) published in the <a href="https://www.zillow.com/research/data/" title="Zillow Research Data">Zillow Research Data sets</a>.</p>
+
+<h3 id="now-small-house-or-large-house-which-is-it">Now, small house or large house? Which is it?!?</h3>
+
+<p>After an initial organization and exploration of the data, I dug into the small versus large comparisons.</p>
+
+<h4 id="question-1-are-small-homes-more-valuable-per-square-foot-than-large-homes">Question 1. Are small homes more valuable (per square foot) than large homes?</h4>
+
+<p>This was a pretty straighforward question to answer. I defined three home size &lsquo;types&rsquo; - small (less than 1200 sqft), medium (1200 - 2400 sqft), and large (more than 2400 sqft) - and calcuated the mean price per square foot for each home size type.</p>
+
+<figure>
+  <img src="/images/zillow_post_images/Project2_figures/Post1_Fig1.png" alt="Fig1" style='width:60%'>
+  <figcaption>Figure 1. Price per Square Foot by Home Size.</figcaption>
+</figure>
+
+<p>The mean price per square foot for a small home is $249, for a &lsquo;medium&rsquo; sized home is $195, and for a &lsquo;large&rsquo; home is $208. <strong>Relative to their size, small homes are more valuable than large homes</strong>. That was easy! Next I addressed geographic features in the small vs. large comparisons.</p>
+
+<h4 id="question-2-is-a-small-home-downtown-really-more-valuable-than-a-large-home-in-the-burbs">Question 2: Is a small home downtown really more valuable than a large home in the &lsquo;burbs?</h4>
+
+<p>To address this question I needed to create some geographic categories in the data. Each zip code was assigned to a neighborhood and one of four gegraphic regions: Central, East, South, and North-West. The regions category is a helpful way to understand the data if you&rsquo;re not familiar with Salt Lake City&rsquo;s neighborhoods. In this analysis the Central region is considered &lsquo;urban&rsquo; and the other three regions are considered &lsquo;suburban&rsquo;. See the <a href="https://github.com/katherinechandler/Zillow_Analysis_Salt_Lake_City" title="GitHub">GitHub repo</a>) for full explaination of the geographic classifications.</p>
+
+<p>After categorizing the listings, the price per square foot for home size categories (small, medium, and large) were plotted for each neighborhood and region.</p>
+
+<figure>
+  <img src="/images/zillow_post_images/Project2_figures/Post1_Fig2a.png" alt="Fig2" style='width:200%'>
+  <figcaption>Figure 2a. Price per Square Foot by Size Category and Neighborhood.</figcaption>
+  <img src="/images/zillow_post_images/Project2_figures/Post1_Fig2b.png" alt="Fig2" style='width:200%'>
+  <figcaption>Figure 2b. Price per Square Foot by Size Category and Geographic Region.</figcaption>
+</figure>
+
+<p>To strictly answer my question, <strong>yes, a small home downtown is more valuable (relative to size) than a large house in the suburbs.</strong> The median price per square foot for a small home in Central Salt Lake is $323 while large homes in East, North-West, and South Salt Lake City are priced at $222, $128, and $148, respectively.</p>
+
+<p>The price per square foot by neighborhood plot surprised me, however, in that a small home in Central Salt Lake is <em>not</em> more valuable (per square foot) than a small home in the fancy Eastern suburb of Cottonwood. In fact, the most valuable asset type in this data set is a small home in Cottonwood, with a median price per square foot of $364. This doesn&rsquo;t hold true for the other East-SLC neighborhoods nor for neighborhoods in the North-West and South suburbs.</p>
+
+<h4 id="question-3-has-the-relative-value-of-small-urban-homes-increased-more-over-time-than-that-of-large-suburban-homes">Question 3: Has the relative value of small urban homes increased more over time than that of large suburban homes?</h4>
+
+<p>Exploration for this question made use of the Zillow Home Value Index (ZHVI) in the historic pricing timeseries data. This data set doesn&rsquo;t contain a direct measure of home size (i.e. sqft) but it does contain aggregate information about estimated value for a given bedroom count. I calculated a simple Pearson correlation (&rho; = 0.575) to confirm that the number of bedrooms and the size of the listing are indeed positively correlated. I determined that one and two bedroom properties usually fall below the &lsquo;small&rsquo; category (median size is 759 and 1202 sqft, respectively), and homes with four or more bedrooms usually fall within the &lsquo;large&rsquo; category cutoff of 2400+ sqft (median size is 2696 sqft). Thus, for this analysis &lsquo;small&rsquo; homes will be classified as 1-2 bedrooms and &lsquo;large&rsquo; will be classified as 4 or more bedrooms.</p>
+
+<p>To compare price as ZHVI values for different classes of homes (small-downtown, large-suburban, etc), I needed to normalize the data to a contstant value. The absolute ZHVI of a small home downtown may be lower than that of a large suburban home, but I&rsquo;m interested in how properties have appreciated over time. I normalized the ZHVI at each timestamp to the earliest ZHVI for that given &lsquo;home type&rsquo; (number of bedrooms + zip code). The historic price data was processed using code in the <code>Zillow_SLC_Historic_Data</code> notebook in the <a href="https://github.com/katherinechandler/Zillow_Analysis_Salt_Lake_City" title="GitHub">GitHub repo</a>.</p>
+
+<p>The normalized Zillow Home Value Index (ZHVI) was plotted for small homes downtown versus large homes in each of the three suburban regions.</p>
+
+<figure>
+  <img src="/images/zillow_post_images/Project2_figures/fig8.png" alt="Fig3" style='width:100%'>
+  <figcaption>Figure 3. Historical Prices for Small Urban Homes and Large Suburban Homes.</figcaption>
+</figure>
+
+<p>The relative value of small urban homes <strong>has</strong> appreciated more than that of large suburban homes, particularly in less desirable neighborhoods like North-West and South Salt Lake City. In fact, the 2018 data shows small homes at their highest valuation since 1996, while large suburban homes are appreciated to roughly the same valuation as during the 2006-2008 bubble. It is interesting to note that while all geographic regions and home size types exhibited rapid appreciation during the &lsquo;bubble&rsquo;, the magnitude of depreciation for each region/home type differed. To explore this observation, I created a &lsquo;volitility-index&rsquo; to measure the percentage drop in price from the maximum price during the boom to the minimum price during the recession.</p>
+
+<figure>
+  <img src="/images/zillow_post_images/Project2_figures/depreciation.png" alt="Fig3" style='width:100%'>
+  <img src="/images/zillow_post_images/Project2_figures/depreciation2.png" alt="Fig3" style='width:100%'>
+  <figcaption>Figure 3. Percent Depreciation during the 2008 Economic 'Crash'.</figcaption>
+</figure>
+
+<p>During the 2008-2010 market collapse, the value of small urban homes declined the least (-22.8%) and large suburban homes in the North-West region declined the most (-36.7% for 5+ bedrooms). Homes of all sizes in the Central region maintained value better than in other regions, with an average decline of just 25.0% compared to 29.6% in the East region, 35.7% in the North-West region, and 32.5% in the South region.</p>
+
+<p>So, is it better to own a small home downtown than a large home in the suburbs? The answer undoubtably depends on the specific suburb and the market trajectory, but in the context of Salt Lake City and the current economic context I will give this question a <strong>&lsquo;probably&rsquo; yes</strong>. Small urban homes are rapidly appreciating and are likely to maintain value well in the next downturn.</p>
+
+<h3 id="summary">Summary</h3>
+
+<ul>
+<li><p>Are small homes more valuable (per square foot) than large homes?</p>
+
+<p><strong>Yes.</strong></p></li>
+
+<li><p>Is a small home downtown really more valuable than a large home in the &lsquo;burbs?</p>
+
+<p><strong>Yes, but surprisingly a small home in a fancy suburb is worth more!</strong></p></li>
+
+<li><p>Has the relative value of small urban homes increased more rapidly than that of larger suburban homes?</p>
+
+<p><strong>Yep, and small homes are likely to maintain value better as well.</strong></p></li>
+</ul>
+
+<p>These findings are mixed for the small house people. Small urban homes do hold their value well and in the current market are appreciating quickly, but for prospective buyers small homes come with a high price per square foot. I am satisfied that small urban homes are a stable investment, but I suppose I&rsquo;ll have to keep an open mind about Salt Lake City&rsquo;s eastern suburbs.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+        
+      </div>
+    </main>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-near-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://example.com" >
+    &copy; 2018 Home
+  </a>
+  
+
+
+
+
+
+
+
+  <a href="https://github.com/katherinechandler" class="link-transition github link dib z-999 pt3 pt0-l mr2" title="Github link">
+    <svg  height="32px"  style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <path d="M256,32C132.3,32,32,134.8,32,261.7c0,101.5,64.2,187.5,153.2,217.9c11.2,2.1,15.3-5,15.3-11.1   c0-5.5-0.2-19.9-0.3-39.1c-62.3,13.9-75.5-30.8-75.5-30.8c-10.2-26.5-24.9-33.6-24.9-33.6c-20.3-14.3,1.5-14,1.5-14   c22.5,1.6,34.3,23.7,34.3,23.7c20,35.1,52.4,25,65.2,19.1c2-14.8,7.8-25,14.2-30.7c-49.7-5.8-102-25.5-102-113.5   c0-25.1,8.7-45.6,23-61.6c-2.3-5.8-10-29.2,2.2-60.8c0,0,18.8-6.2,61.6,23.5c17.9-5.1,37-7.6,56.1-7.7c19,0.1,38.2,2.6,56.1,7.7   c42.8-29.7,61.5-23.5,61.5-23.5c12.2,31.6,4.5,55,2.2,60.8c14.3,16.1,23,36.6,23,61.6c0,88.2-52.4,107.6-102.3,113.3   c8,7.1,15.2,21.1,15.2,42.5c0,30.7-0.3,55.5-0.3,63c0,6.1,4,13.3,15.4,11C415.9,449.1,480,363.1,480,261.7   C480,134.8,379.7,32,256,32z"/>
+</svg>
+
+  </a>
+
+
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>
