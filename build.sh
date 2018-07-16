@@ -7,6 +7,9 @@ hugo -t ananke # if using a theme, replace with `hugo -t <YOURTHEME>`
 
 # Go To Public folder
 cd public
+
+# pull down changes
+git pull origin master
 # Add changes to git.
 git add .
 
